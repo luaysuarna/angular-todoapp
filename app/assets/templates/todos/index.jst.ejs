@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>{{title}}</strong>
+      </li>
+      <li class="list-group-item">
+        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</small>
+      </li>
+      <li class="list-group-item">
+        <form ng-init='newTask' ng-submit='addTask(newTask)'>
+          <div class="form-group {{ needEnter ? 'js-needEnter' : '' }}">
+            <label class='control-label' for='name'>Add new task</label>
+            <input type="text" name="name" id='name' class="form-control" ng-model="newTask.name">
+            <span class="hint" style='display: none;'>Please Push Enter</span>
+          </div>
+        </form>
+      </li>
+      <li class="list-group-item"><strong>List Task</strong></li>
+      <li class="list-group-item {{ task.done ? 'done' : '' }} {{ task.done && hideDone ? 'hide-task': '' }}" ng-repeat="task in tasks">
+        <div class="checkbox">
+          <span ng-if="task.done">
+            <input type="checkbox" class="checkbox" checked id={{task.name}}>
+          </span>
+          <span ng-if="!task.done">
+            <input type="checkbox" class="checkbox" ng-click="switchDone($index, $event)">
+          </span>
+          <label for={{task.name}}>{{task.name}}</label>
+        </div>
+        <button class="btn btn-default btn-sm js-btnCancel" ng-click="switchActive($index, $event)">uncheck</button>
+      </li>
+      <li class="list-group-item" ng-if="hideDone">
+        <button class="btn btn-primary btn-block btn-sm" ng-click='toggleShowDone()'>Show done tasks</button>
+      </li>
+      <li class="list-group-item" ng-if="!hideDone">
+        <button class="btn btn-primary btn-block btn-sm" ng-click='toggleShowDone()'>Hide done tasks</button>
+      </li>
+    </ul>
+  </div>
+</div>
