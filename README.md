@@ -1,24 +1,42 @@
-# README
+# Angular Todo Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+* PosgreSQL https://www.postgresql.org/download/
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Ruby version **2.3.3**
 
-* System dependencies
+Install bundler gem
 
-* Configuration
+```console
+#!bash
 
-* Database creation
+$ gem install bundler
+```
 
-* Database initialization
+Install dependencies
 
-* How to run the test suite
+```console
+#!bash
 
-* Services (job queues, cache servers, search engines, etc.)
+$ bundle install
+```
 
-* Deployment instructions
+Database creation
 
-* ...
+```console
+#!bash
+$ rake db:create
+$ rake db:migrate
+
+```
+
+Run Rails Server
+
+```
+#!bash
+$ rails server
+```
+
+Access in browser [http://localhost:3000](http://localhost:3000)
