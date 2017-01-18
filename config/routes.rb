@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   # FrontEnd Routes
   root to: 'homes#index'
 
@@ -9,6 +10,11 @@ Rails.application.routes.draw do
       resources :todos, only: [:index, :create, :update, :destroy] do
         member do
           put :activator
+        end
+      end
+      resources :sessions, only: [:create, :destroy] do
+        collection do
+          get :validate
         end
       end
     end

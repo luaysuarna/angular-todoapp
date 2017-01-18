@@ -1,3 +1,1 @@
-(1..30).each do |i|
-  Task.create(name: Faker::Name.name, description: Faker::Lorem.sentence)
-end
+['user_one@mail.com', 'user_two@mail.com'].each { |email| User.create(email: email, password: "asdfasdf", password_confirmation: "asdfasdf") }
