@@ -1,9 +1,10 @@
 class Api::V1::TodosController < ApiController
 
-  before_action :set_task, only: [:update, :destroy, :activator]
+  before_action :set_board, only: [:index]
+  before_action :set_task,  only: [:update, :destroy, :activator]
 
   def index
-    render json: success_api("", tasks: Task.select(:id, :name, :done))
+    render json: success_api("", tasks: @board.tasks.select(:id, :name, :done))
   end
 
   def create
@@ -41,11 +42,15 @@ class Api::V1::TodosController < ApiController
   private
 
     def task_params
-      params.require(:task).permit(:id, :name, :description)
+      params.require(:task).permit(:id, :name, :description, :board_id)
     end
 
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def set_board
+      @board = Board.find(params[:board_id])
     end
 
 end

@@ -17,6 +17,11 @@ Rails.application.routes.draw do
           get :validate
         end
       end
+      resources :boards, only: [:index, :create] do
+        collection do
+          get :search
+        end
+      end
     end
   end
 
