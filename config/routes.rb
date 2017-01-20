@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  mount ActionCable.server => '/cable'
   # FrontEnd Routes
   root to: 'homes#index'
 

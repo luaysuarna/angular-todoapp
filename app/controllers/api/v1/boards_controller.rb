@@ -21,7 +21,8 @@ class Api::V1::BoardsController < ApiController
   private
 
     def board_params
-      params.require(:board).permit(:id, :name, :query)
+      params[:board][:user_id] = current_user.id
+      params.require(:board).permit(:id, :name, :query, :user_id)
     end
 
 end

@@ -22,3 +22,4 @@
 
 //= require_tree ../templates
 //= require_tree ./app
+//= require cable

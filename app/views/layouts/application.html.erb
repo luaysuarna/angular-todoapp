@@ -4,11 +4,12 @@
     <title>Todoapp</title>
     <%= csrf_meta_tags %>
 
+    <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body ng-app='TodoApp'>
-    
+    <div id='room' data-room-id='1'></div>
     <%= render 'layouts/partials/navbar' %>
     <div class="main-container container" ui-view></div>
   </body>

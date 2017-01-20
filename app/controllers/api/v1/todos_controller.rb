@@ -42,7 +42,8 @@ class Api::V1::TodosController < ApiController
   private
 
     def task_params
-      params.require(:task).permit(:id, :name, :description, :board_id)
+      params[:task][:user_id] = current_user.id
+      params.require(:task).permit(:id, :name, :description, :board_id, :user_id)
     end
 
     def set_task
