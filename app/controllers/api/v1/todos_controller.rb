@@ -4,7 +4,7 @@ class Api::V1::TodosController < ApiController
   before_action :set_task,  only: [:update, :destroy, :activator]
 
   def index
-    render json: success_api("", tasks: @board.tasks.select(:id, :name, :done))
+    render json: success_api("", tasks: Task.select(:id, :name, :done))
   end
 
   def create
@@ -51,7 +51,7 @@ class Api::V1::TodosController < ApiController
     end
 
     def set_board
-      @board = Board.find(params[:board_id])
+      # @board = Board.find(params[:board_id])
     end
 
 end
